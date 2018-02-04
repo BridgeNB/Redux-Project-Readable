@@ -36,16 +36,19 @@ class CategoryList extends Component {
         <ListGroupItem>
           <h1>This is category</h1>
         </ListGroupItem>
-        <SinglePost />
+        <div className="postsList">
+          <h3> This is post list </h3>
+          { state.posts.map((post) => <SinglePost state={post} key={post.id}/>)}
+        </div>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { categories: state.categories }
+  return {
+    posts: state.posts
+  }
 }
 
-export default connect(mapStateToProps, {
-
-})(CategoryList);
+export default connect(mapStateToProps)(CategoryList);
