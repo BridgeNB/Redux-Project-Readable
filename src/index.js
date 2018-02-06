@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, applyMiddleware, compose } from 'redux'
-import reducer from './reducers/index'
-import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux';
+import { BrowswerRouter } from 'react-router-dom';
+import reducer from './reducers/index';
+import { Provider } from 'react-redux';
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -27,8 +26,10 @@ const store = createStore(
 )
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={ store }>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root'));
 registerServiceWorker();

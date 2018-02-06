@@ -11,10 +11,10 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Grid>
-            <switch>
+            <Switch>
               <Route path="/" exact component={MainPosts}/>
               <Route path="/posts/create" exact component={NewPost} />
-            </switch>
+            </Switch>
           </Grid>
         </div>
       </BrowserRouter>
