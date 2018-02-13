@@ -10,7 +10,7 @@ class NewPost extends Component {
     const { meta: {touched, error}} = field
     const className = touched && error ? 'error' : null
     return (
-      <formGroup>
+      <FormGroup>
         <label>{field.label}</label>
         <FormControl
           type="text"
@@ -19,13 +19,19 @@ class NewPost extends Component {
         <div className="text-help">
           {touched ? error : ''}
         </div>
-      </formGroup>
+      </FormGroup>
     )
 
   }
+  onSubmit(values) {
+    this.props.createPost(values, () => {
+      this.props.history.push('/');
+    });
+  }
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title:"
           name="title"

@@ -1,4 +1,4 @@
-export const API = 'http://localhost:5001'
+export const API = 'http://localhost:3001'
 let token = localStorage.token
 
 if (!token)
