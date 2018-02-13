@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPosts from './MainPosts'
-import NewPost from '../post/components/NewPost'
+import NewPost from './NewPost'
 import "../App.scss";
 
 class App extends Component {

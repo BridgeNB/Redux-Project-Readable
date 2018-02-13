@@ -3,25 +3,27 @@ import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { createPost } from '../actions/actions'
+import { addPost } from '../actions/postActions'
+import { guid } from '../api/util'
 
 class NewPost extends Component {
-  renderField(field) {
-    const { meta: {touched, error}} = field
-    const className = touched && error ? 'error' : null
-    return (
-      <FormGroup>
-        <label>{field.label}</label>
-        <FormControl
-          type="text"
-          {...field.input}
-        />
-        <div className="text-help">
-          {touched ? error : ''}
-        </div>
-      </FormGroup>
-    )
+  createNewPost = (e) => {
+    e.preventDefault()
 
+    const title = e.target.title.value;
+    const body = e.target.body.value;
+    const author = e.target.author.value;
+    const category = e.target.category.value;
+
+    const newPost = {
+      id: guid(),
+      timestamp: Date.now(),
+      title: e.target.title.value,
+      body: e.target.body.value,
+      author: e.target.author.value,
+      category: e.target.category.value,
+    }
+    this.props.addPost(newPost, () => this.props.history.push('/'))
   }
   onSubmit(values) {
     this.props.createPost(values, () => {
@@ -29,9 +31,8 @@ class NewPost extends Component {
     });
   }
   render() {
-    const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form onSubmit={this.createNewPost}>
         <Field
           label="Title:"
           name="title"
@@ -85,6 +86,5 @@ export default reduxForm({
     form: 'CreatePostForm'
 })(
     connect(mapStateToProps, {
-        createPost
     })(NewPost)
 );

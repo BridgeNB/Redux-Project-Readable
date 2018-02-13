@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Button } from 'react-bootstrap'
-import CategoreList from '../category/components/CategoryList'
+import CategoreList from './CategoryList'
 
 class MainPosts extends Component {
   render() {
