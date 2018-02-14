@@ -23,7 +23,6 @@ class CategoryList extends Component {
       <div>
         <div className="postsList">
           <h3> This is post list </h3>
-          { console.log(this.props)}
           { posts.map((post) => (<SinglePost state={post} key={post.id}/>))}
         </div>
       </div>

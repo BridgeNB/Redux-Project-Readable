@@ -13,7 +13,7 @@ class NewPost extends Component {
     const title = e.target.title.value;
     const body = e.target.body.value;
     const author = e.target.author.value;
-    // const category = e.target.category.value;
+    const category = e.target.category.value;
 
     const newPost = {
       id: guid(),
@@ -21,10 +21,9 @@ class NewPost extends Component {
       title: e.target.title.value,
       body: e.target.body.value,
       author: e.target.author.value,
-      category: e.target.category.value
+      category: e.target.category.value,
     }
-    console.log('sxxxx')
-    console.log(this.props)
+
     this.props.addPost(newPost, () => this.props.history.push('/'))
   }
 
@@ -47,10 +46,11 @@ class NewPost extends Component {
         <li>
           <label>Category
           </label>
+          {console.log(this.props.posts)}
           <select name="category" className="field-select">
-            {this.props.categories && this.props.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
+            {this.props.posts.categories && this.props.posts.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
           </select>
-        </li> 
+        </li>
         <li>
           <label>Post
             <span className="required">*</span>
@@ -66,8 +66,8 @@ class NewPost extends Component {
   }
 }
 
-function mapStateToProps(posts) {
-  return {posts: posts}
+function mapStateToProps(posts, categories) {
+  return {posts: posts, categories: categories}
 }
 
 export default connect(mapStateToProps, {addPost})(NewPost);

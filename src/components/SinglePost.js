@@ -20,6 +20,7 @@ class SinglePost extends Component {
     return (
       <div className="singlePost">
         <div className="postTitle"><h3>{ state.title }</h3></div>
+        <div className="postId">{ state.id }</div>
         <div className="postBody">{ state.body }</div>
         <div className="postAuthor">{ state.author }</div>
         <div className="postCategory">{ state.category }</div>
