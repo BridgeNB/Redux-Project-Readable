@@ -1,7 +1,7 @@
 import * as Types from '../actions/types'
 
 function posts(state = [], action) {
-  const {posts, post} = action
+  const {post} = action
   switch(action.type) {
     case Types.FETCH_POSTS:
       return action.posts.filter(post => !(post.deleted))

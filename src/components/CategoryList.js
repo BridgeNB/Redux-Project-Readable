@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { ListGroupItem, FieldGroup } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import * as actions from '../actions/postActions'
 

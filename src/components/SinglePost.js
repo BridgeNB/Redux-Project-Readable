@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class SinglePost extends Component {
   render() {
-    let { state, actions } = this.props;
+    let { state } = this.props;
     /************** mock state & actions *********/
     // let mockState = {
     //   id: 0,

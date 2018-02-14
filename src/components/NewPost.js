@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {Field, reduxForm} from 'redux-form'
+// import {Field, reduxForm} from 'redux-form'
 import {Link} from 'react-router-dom'
-import {FormGroup, FormControl, Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {addPost} from '../actions/postActions'
 import {guid} from '../api/util'
@@ -46,10 +46,13 @@ class NewPost extends Component {
         <li>
           <label>Category
           </label>
+          {console.log('xxxxxxx')}
+          {console.log(this.props.categories)}
           {console.log(this.props.posts)}
-          <select name="category" className="field-select">
-            {this.props.posts.categories && this.props.posts.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
-          </select>
+          {console.log(this.props.posts.categories)}
+          {/* <select name="category" className="field-select">
+            {this.props.categories && this.props.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
+          </select> */}
         </li>
         <li>
           <label>Post

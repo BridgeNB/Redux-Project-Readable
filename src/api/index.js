@@ -17,8 +17,6 @@ export const fetchPosts = () => {
 }
 
 export const addPost = (post) => {
-  console.log('xxxxxxxxxxxx')
-  console.log(post)
   return fetch(`${API}/posts`, {
     method: 'POST',
     headers: headers,

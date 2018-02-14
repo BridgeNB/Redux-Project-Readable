@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import CategoreList from './CategoryList'
 
 class MainPosts extends Component {
@@ -12,7 +12,7 @@ class MainPosts extends Component {
         </Col>
         <Col md={10}>
           <h1>Main Posts</h1>
-          <Link to="/posts/create" className="btn btn-danger">Create post</Link>
+          <Link to="/create" className="btn btn-danger">Create post</Link>
           <CategoreList />
         </Col>
       </Row>
