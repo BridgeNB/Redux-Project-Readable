@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { Link } from 'react-router-dom'
-import { FormGroup, FormControl, Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { addPost } from '../actions/postActions'
-import { guid } from '../api/util'
+import React, {Component} from 'react'
+import {Field, reduxForm} from 'redux-form'
+import {Link} from 'react-router-dom'
+import {FormGroup, FormControl, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addPost} from '../actions/postActions'
+import {guid} from '../api/util'
 
 class NewPost extends Component {
   createNewPost = (e) => {
@@ -13,7 +13,7 @@ class NewPost extends Component {
     const title = e.target.title.value;
     const body = e.target.body.value;
     const author = e.target.author.value;
-    const category = e.target.category.value;
+    // const category = e.target.category.value;
 
     const newPost = {
       id: guid(),
@@ -21,70 +21,53 @@ class NewPost extends Component {
       title: e.target.title.value,
       body: e.target.body.value,
       author: e.target.author.value,
-      category: e.target.category.value,
+      category: e.target.category.value
     }
+    console.log('sxxxx')
+    console.log(this.props)
     this.props.addPost(newPost, () => this.props.history.push('/'))
   }
-  onSubmit(values) {
-    this.props.createPost(values, () => {
-      this.props.history.push('/');
-    });
-  }
+
   render() {
-    return (
-      <form onSubmit={this.createNewPost}>
-        <Field
-          label="Title:"
-          name="title"
-          component={this.renderField}
-        />
-        <Field
-          label='Content:'
-          name='body'
-          component={this.renderField}
-        />
-        <Field
-          label='Author:'
-          name='author'
-          component={this.renderField}
-        />
-        <Button type="submit" bsStyle="primary">Submit</Button>
-        <Link to="/" className="btn btn-danger">Cancel</Link>
-      </form>
-    )
+    return (<form onSubmit={this.createNewPost}>
+      <h2>New Post</h2>
+      <ul className="form-style-1">
+        <li>
+          <label>Name
+            <span className="required">*</span>
+          </label>
+          <input type="text" name="author" className="field-long"/>
+        </li>
+        <li>
+          <label>Title
+            <span className="required">*</span>
+          </label>
+          <input type="text" name="title" className="field-long"/>
+        </li>
+        <li>
+          <label>Category
+          </label>
+          <select name="category" className="field-select">
+            {this.props.categories && this.props.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
+          </select>
+        </li> 
+        <li>
+          <label>Post
+            <span className="required">*</span>
+          </label>
+          <textarea name="body" id="field5" className="field-long field-textarea"></textarea>
+        </li>
+        <button>Submit
+        </button>
+      </ul>
+      <Button type="submit" bsStyle="primary">Submit</Button>
+      <Link to="/" className="btn btn-danger">Cancel</Link>
+    </form>)
   }
 }
 
-function validate(values) {
-    const errors = {};
-
-    if (!values.title) {
-        errors.title = "Enter a title!"
-    }
-
-    if (!values.author) {
-        errors.author = "Enter a name!"
-    }
-
-    if (!values.body) {
-        errors.body = "Enter some content!"
-    }
-
-    if (!values.category) {
-        errors.category = "Select some content!"
-    }
-
-    return errors;
+function mapStateToProps(posts) {
+  return {posts: posts}
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default reduxForm({
-    validate,
-    form: 'CreatePostForm'
-})(
-    connect(mapStateToProps, {
-    })(NewPost)
-);
+export default connect(mapStateToProps, {addPost})(NewPost);
