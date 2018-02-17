@@ -27,7 +27,7 @@ class DetailedPost extends Component {
             </div>
           </div>
           <div className='post-detail-buttons'>
-            <button>Edit</button>
+            <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
             <button>Comment</button>
             <button onClick={(e) => this.afterPostDelete(e)}>Delete</button>
           </div>
@@ -36,7 +36,7 @@ class DetailedPost extends Component {
   }
 }
 
-function mapStateToProps({ posts}, { match }) {
+function mapStateToProps({ posts }, { match }) {
   const post = _.find(posts, {id: match.params.postId});
   return {
     post: post

@@ -7,6 +7,7 @@ import * as actions from '../actions/categoryActions';
 import MainPosts from './MainPosts';
 import NewPost from './NewPost';
 import DetailedPost from './DetailedPost';
+import EditPost from './EditPost'
 import "../App.scss";
 
 class App extends Component {
@@ -39,7 +40,8 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={MainPosts}/>
               <Route path="/create" exact component={NewPost}/>
-              <Route path="/:category/:postId" component={DetailedPost}/>
+              <Route path="/:category/:postId" exact component={DetailedPost}/>
+              <Route path="/:category/:postId/edit" exact component={EditPost}/>
             </Switch>
           </Grid>
         </div>

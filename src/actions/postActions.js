@@ -22,3 +22,10 @@ export const deletePost = (postId, callback) => {
     dispatch({ type: Types.DELETE_POST, postId})
   }
 }
+
+export const editPost = (postId, title, body, callback) => {
+  return (dispatch) => {
+    API.editPost(postId, title, body).then(() => callback())
+    dispatch({ type: Types.EDIT_POST, title, body})
+  }
+}
