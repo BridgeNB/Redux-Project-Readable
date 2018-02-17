@@ -48,7 +48,7 @@ class NewPost extends Component {
           <label>Category
           </label>
           <select name="category" className="field-select">
-            {this.props.categories && this.props.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
+            {posts.categories && posts.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
           </select>
         </li>
         <li>
@@ -57,8 +57,6 @@ class NewPost extends Component {
           </label>
           <textarea name="body" id="field5" className="field-long field-textarea"></textarea>
         </li>
-        <button>Submit
-        </button>
       </ul>
       <Button type="submit" bsStyle="primary">Submit</Button>
       <Link to="/" className="btn btn-danger">Cancel</Link>

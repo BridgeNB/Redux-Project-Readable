@@ -29,7 +29,7 @@ class DetailedPost extends Component {
           <div className='post-detail-buttons'>
             <button>Edit</button>
             <button>Comment</button>
-            <button onClick={(e) => this.onPostDelete(e)}>Delete</button>
+            <button onClick={(e) => this.afterPostDelete(e)}>Delete</button>
           </div>
         </div>
       )
