@@ -21,7 +21,7 @@ class CategoryList extends Component {
       <div>
         <div className="postsList">
           <h3> This is post list </h3>
-          { posts.map((post) => (<SinglePost state={post} key={post.id}/>))}
+          { posts.map((post) => (<SinglePost post={post} key={post.id}/>))}
         </div>
       </div>
     )

@@ -3,8 +3,8 @@ import * as Types from './types'
 
 export const fetchCategories = () => {
   return (dispatch) => {
-    API.fetchCategories().then(categories => {
-      dispatch({ type: Types.FETCH_CATEGORIES, categories})
+    API.fetchCategories().then(res => {
+      dispatch({ type: Types.FETCH_CATEGORIES, res})
     })
   }
 }

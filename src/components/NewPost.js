@@ -28,6 +28,7 @@ class NewPost extends Component {
   }
 
   render() {
+    const { posts, categories } = this.props;
     return (<form onSubmit={this.createNewPost}>
       <h2>New Post</h2>
       <ul className="form-style-1">
@@ -46,13 +47,9 @@ class NewPost extends Component {
         <li>
           <label>Category
           </label>
-          {console.log('xxxxxxx')}
-          {console.log(this.props.categories)}
-          {console.log(this.props.posts)}
-          {console.log(this.props.posts.categories)}
-          {/* <select name="category" className="field-select">
+          <select name="category" className="field-select">
             {this.props.categories && this.props.categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
-          </select> */}
+          </select>
         </li>
         <li>
           <label>Post

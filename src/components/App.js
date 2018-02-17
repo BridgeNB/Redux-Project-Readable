@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Grid} from 'react-bootstrap';
-import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import * as actions from '../actions/categoryActions'
+import * as actions from '../actions/categoryActions';
 import MainPosts from './MainPosts';
 import NewPost from './NewPost';
+import DetailedPost from './DetailedPost';
 import "../App.scss";
 
 class App extends Component {
@@ -20,16 +21,30 @@ class App extends Component {
 
   render() {
     const {categories} = this.props
-    return (<BrowserRouter>
-      <div>
-        <Grid>
-          <Switch>
-            <Route path="/" exact component={MainPosts}/>
-            <Route path="/create" exact component={NewPost}/>
-          </Switch>
-        </Grid>
-      </div>
-    </BrowserRouter>);
+    return (
+      <div className="whole-app">
+        <div className="filters">
+          <div className="category-changer">
+            <p>Choose Category</p>
+            {categories && categories.map(category => (
+              <Link key={category.name} to={`/${category.path}`}>
+                <button>{category.name}</button>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <Grid>
+            <Switch>
+              <Route path="/" exact component={MainPosts}/>
+              <Route path="/create" exact component={NewPost}/>
+              <Route path="/:category/:postId" component={DetailedPost}/>
+            </Switch>
+          </Grid>
+        </div>
+    </div>
+    );
   }
 }
 

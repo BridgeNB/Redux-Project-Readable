@@ -11,7 +11,14 @@ export const fetchAllPosts = () => {
 
 export const addPost = (post, callback) => {
   return (dispatch) => {
-    API.addPost(post).then(()=>callback())
+    API.addPost(post).then(() => callback())
     dispatch({ type: Types.ADD_POST, post})
+  }
+}
+
+export const deletePost = (postId, callback) => {
+  return (dispatch) => {
+    API.deletePost(postId).then(() => callback())
+    dispatch({ type: Types.DELETE_POST, postId})
   }
 }

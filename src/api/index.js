@@ -24,6 +24,13 @@ export const addPost = (post) => {
   })
 }
 
+export const deletePost = (postId) => {
+  return fetch(`${API}/posts/${postId}`, {
+    method: 'DELETE',
+    headers: headers
+  }).then(res => res.json())
+}
+
 /****** category function ********/
 
 export const fetchCategories = () => {

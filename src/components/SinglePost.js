@@ -1,29 +1,19 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import * as actions from '../actions/postActions'
 
 class SinglePost extends Component {
   render() {
-    let { state } = this.props;
-    /************** mock state & actions *********/
-    // let mockState = {
-    //   id: 0,
-    //   title: "Udacity is the best place to learn react",
-    //   body: "This is the body",
-    //   author: "Yangqiao Zheng",
-    //   category: "React"
-    // }
-    // let mockAction = {
-    //   showPost: id => console.log('ShowPost', id)
-    // }
-    // state = mockState
-    // actions = mockAction
-    /********** end mock state and action ******/
+    let { post } = this.props;
     return (
       <div className="singlePost">
-        <div className="postTitle"><h3>{ state.title }</h3></div>
-        <div className="postId">{ state.id }</div>
-        <div className="postBody">{ state.body }</div>
-        <div className="postAuthor">{ state.author }</div>
-        <div className="postCategory">{ state.category }</div>
+        <Link to={`/${post.category}/${post.id}`}>
+          <div className="postTitle"><h3>{ post.title }</h3></div>
+        </Link>
+        <div className="postId">{ post.id }</div>
+        <div className="postBody">{ post.body }</div>
+        <div className="postAuthor">{ post.author }</div>
+        <div className="postCategory">{ post.category }</div>
       </div>
     );
   }
