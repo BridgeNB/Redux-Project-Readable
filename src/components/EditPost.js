@@ -6,9 +6,9 @@ import { editPost, fetchAllPosts } from '../actions/postActions';
 import _ from 'lodash';
 
 class EditPost extends Component {
-  componentDidMount() {
-    this.props.fetchAllPosts()
-  }
+  // componentDidMount() {
+  //   this.props.fetchAllPosts()
+  // }
   edit = (e) => {
     e.preventDefault()
     const postId = this.props.post.id
