@@ -39,8 +39,33 @@ export const editPost = (postId, title, body) => {
   }).then(res => res.json())
 }
 
+export const fetchPostByCategories = (category) => {
+  return fetch(`$(API)/posts`, { headers }).then(res => res.json())
+}
+
 /****** category function ********/
 
 export const fetchCategories = () => {
   return fetch(`${API}/categories`, {headers}).then(res => res.json())
+}
+
+/******* comment function ********/
+
+export const fetchComment = (postId) => {
+  return fetch(`${API}/posts/${postId}/comments`, { headers }).then(res => res.json())
+}
+
+export const deleteComment = (commentId) => {
+  return fetch(`${API}/comments/${commentId}`, {
+    method: 'DELETE',
+    headers: headers
+  }).then(res => res.json())
+}
+
+export const updateComment = (commentId, timestamp, body) => {
+    return fetch(`${API}/comments/${commentId}`, {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify({ timestamp: timestamp, body: body})
+    }).then(res => res.json())
 }

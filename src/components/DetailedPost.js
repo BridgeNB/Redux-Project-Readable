@@ -28,7 +28,7 @@ class DetailedPost extends Component {
           </div>
           <div className='post-detail-buttons'>
             <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
-            <button>Comment</button>
+            <Link to={`/${post.category}/${post.id}/comment`}>Comment</Link>
             <button onClick={(e) => this.afterPostDelete(e)}>Delete</button>
           </div>
         </div>
