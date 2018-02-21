@@ -69,3 +69,11 @@ export const updateComment = (commentId, timestamp, body) => {
       body: JSON.stringify({ timestamp: timestamp, body: body})
     }).then(res => res.json())
 }
+
+export const addComment = (comment) => {
+  return fetch(`${API}/comments`, {
+    methods: 'POST',
+    headers: headers,
+    body: JSON.stringify(comment)
+  }).then(res => res.json())
+}

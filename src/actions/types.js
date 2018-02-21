@@ -6,3 +6,7 @@ export const EDIT_POST = 'EDIT_POST'
 
 // category actions
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
+
+// comment comment actions
+export const ADD_COMMENT = 'ADD_COMMENT'
+export const FETCH_COMMENTS = 'FETCH_COMMENTS'

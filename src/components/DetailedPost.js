@@ -2,18 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deletePost } from '../actions/postActions'
+import { fetchCommentsForPost } from '../actions/commentActions'
 
 import _ from 'lodash'
 
 class DetailedPost extends Component {
+  componentDidMount() {
+    this.props.fetchCommentsForPost(this.props.match.params.postId)
+  }
+
   afterPostDelete = () => {
     const id = this.props.match.params.postId
     this.props.deletePost(id, () => {
       this.props.history.push('/')
     })
   }
+
   render() {
-      const { post } = this.props
+      const { post, comments } = this.props
       if (!post) {
         return <div>404 not found</div>
       }
@@ -26,6 +32,16 @@ class DetailedPost extends Component {
               <div className='post-author'>{post.author}</div>
             </div>
           </div>
+          <div className="comment-list">
+            {console.log('xxxxxxxxx')}
+            {console.log(this.props)}
+            {console.log(comments)}
+            {this.props.comments.map(comment => (
+              <div className="single-comment" key={comment.id}>
+                <p>{comment.body}</p>
+              </div>
+            ))}
+          </div>
           <div className='post-detail-buttons'>
             <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
             <Link to={`/${post.category}/${post.id}/comment`}>Comment</Link>
@@ -36,11 +52,12 @@ class DetailedPost extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { match }) {
+function mapStateToProps({ posts, comments }, { match }) {
   const post = _.find(posts, {id: match.params.postId});
   return {
-    post: post
+    post: post,
+    comments: comments[match.params.postId]
   }
 }
 
-export default connect(mapStateToProps, { deletePost })(DetailedPost)
+export default connect(mapStateToProps, { deletePost, fetchCommentsForPost })(DetailedPost)

@@ -11,7 +11,7 @@ function posts(state = [], action) {
       return state.filter((post) => post.id !== postId)
     case Types.EDIT_POST:
       return state.map(post => {
-        if (post.id == postId) {
+        if (post.id === postId) {
           post = editedPost
         }
         return post
