@@ -17,7 +17,7 @@ class NewComment extends Component {
         author: author
       }
     this.props.addComment(submitComment, postId,
-        () => this.props.history.push(`/post/${postId}`))
+        () => this.props.history.push(`/posts/${postId}`))
     }
 
   render() {
@@ -39,4 +39,10 @@ class NewComment extends Component {
   }
 }
 
-export default NewComment;
+function mapStateToProps(comment) {
+  return {
+    comment: comment
+  }
+}
+
+export default connect(mapStateToProps, {addComment}) (NewComment);

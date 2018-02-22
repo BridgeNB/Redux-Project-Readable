@@ -11,8 +11,14 @@ export const fetchCommentsForPost = (postId) => {
 
 export const addComment = (comment, postId, callback) => {
   return (dispatch) => {
-    API.addComment(comment).then(comment => {
-      dispatch({ type: Types.ADD_COMMENT, postId, comment})
-    }).then(() => callback())
+    API.addComment(comment).then(() => callback())
+    dispatch({ type: Types.ADD_COMMENT, postId, comment})
+  }
+}
+
+export const deleteComment = (commentId, callback) => {
+  return (dispatch) => {
+    API.deleteComment(commentId).then(() => callback())
+    dispatch({ type: Types.DELETE_COMMENT, commentId})
   }
 }

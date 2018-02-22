@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import _ from 'lodash'
+
 import { deletePost } from '../actions/postActions'
 import { fetchCommentsForPost } from '../actions/commentActions'
+import { fetchAllPosts } from '../actions/postActions'
 
-import _ from 'lodash'
+import PostComment from './PostComment'
+
+
 
 class DetailedPost extends Component {
   componentDidMount() {
+    this.props.fetchAllPosts()
     this.props.fetchCommentsForPost(this.props.match.params.postId)
   }
 
@@ -32,21 +38,23 @@ class DetailedPost extends Component {
               <div className='post-author'>{post.author}</div>
             </div>
           </div>
-          <div className="comment-list">
+          {/* <div className="comment-list">
             {console.log('xxxxxxxxx')}
             {console.log(this.props)}
             {console.log(comments)}
             {this.props.comments.map(comment => (
               <div className="single-comment" key={comment.id}>
                 <p>{comment.body}</p>
+                <p>{comment.author}</p>
               </div>
             ))}
-          </div>
+          </div> */}
           <div className='post-detail-buttons'>
             <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
             <Link to={`/${post.category}/${post.id}/comment`}>Comment</Link>
             <button onClick={(e) => this.afterPostDelete(e)}>Delete</button>
           </div>
+          {post && comments && <PostComment category={post.category} comments={comments} history={this.props.history}/>}
         </div>
       )
   }
@@ -60,4 +68,4 @@ function mapStateToProps({ posts, comments }, { match }) {
   }
 }
 
-export default connect(mapStateToProps, { deletePost, fetchCommentsForPost })(DetailedPost)
+export default connect(mapStateToProps, { deletePost, fetchCommentsForPost, fetchAllPosts })(DetailedPost)

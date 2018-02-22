@@ -28,7 +28,9 @@ class CategoryList extends Component {
   }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts }, { match }) {
+  const category = match
+  console.log(match)
   return {
     posts: posts
   }
