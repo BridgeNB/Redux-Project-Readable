@@ -4,7 +4,6 @@ function comments(state=[], action) {
   const { comments, commentId, postId, editedComment } = action
   switch(action.type) {
     case Types.ADD_COMMENT:
-      // return state.concat(comments[postId])
       return Object.assign({}, state, {[postId]: comments})
     case Types.FETCH_COMMENTS:
       return Object.assign({}, state, {[postId]: comments})
@@ -16,6 +15,16 @@ function comments(state=[], action) {
       //  newState[action.postId] = []
       // }
       // return newState;
+    case Types.EDIT_COMMENT:
+      return {
+        ...state,
+        [postId]: state[postId].map(comment => {
+          if(comment.id === commentId) {
+            comment = editedComment
+          }
+          return comment
+        })
+      }
     default:
       return state;
   }

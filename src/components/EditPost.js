@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { editPost, fetchAllPosts } from '../actions/postActions';
+
+import { editPost, fetchAllPosts } from '../actions/postActions'
+import { fetchCommentsForPost } from '../actions/commentActions'
 
 import _ from 'lodash';
 
 class EditPost extends Component {
-  // componentDidMount() {
-  //   this.props.fetchAllPosts()
-  // }
+  componentDidMount() {
+    this.props.fetchAllPosts()
+    this.props.fetchCommentsForPost(this.props.match.params.postId)
+  }
   edit = (e) => {
     e.preventDefault()
     const postId = this.props.post.id
@@ -34,7 +37,7 @@ class EditPost extends Component {
               <label>Post <span className="required">*</span></label>
               <textarea defaultValue={post.body} name="body" id="field5" className="field-long field-textarea"></textarea>
             </li>
-            <button>Update</button>
+            <button>Edit</button>
             <Link to={`/post/${post.id}`}>
               <button>Cancel</button>
             </Link>
@@ -45,12 +48,12 @@ class EditPost extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { match }) {
+function mapStateToProps({ posts, comments }, { match }) {
   const post = _.find(posts, {id: match.params.postId});
-  console.log(post);
   return {
-    post: post
+    post: post,
+    comments: comments[match.params.postId]
   }
 }
 
-export default connect(mapStateToProps, { editPost, fetchAllPosts })(EditPost);
+export default connect(mapStateToProps, { editPost, fetchAllPosts, fetchCommentsForPost })(EditPost);

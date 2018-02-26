@@ -48,7 +48,6 @@ class NewPost extends Component {
           <label>Category
           </label>
           <select name="category" className="field-select">
-            {console.log(this.props)}
             {categories && categories.map((category) => (<option key={category.name} value={category.name}>{category.name}</option>))}
           </select>
         </li>

@@ -22,3 +22,12 @@ export const deleteComment = (commentId, callback) => {
     dispatch({ type: Types.DELETE_COMMENT, commentId})
   }
 }
+
+export const editComment = (commentId, postId, timestamp, body, callback) => {
+  return (dispatch) => {
+    API.editComment(commentId, timestamp, body)
+      .then(editedComment => {
+        dispatch({ type: Types.EDIT_COMMENT, editedComment, commentId, postId })
+      }).then(() => callback())
+  }
+}

@@ -9,8 +9,6 @@ import { fetchAllPosts } from '../actions/postActions'
 
 import PostComment from './PostComment'
 
-
-
 class DetailedPost extends Component {
   componentDidMount() {
     this.props.fetchAllPosts()
@@ -38,17 +36,6 @@ class DetailedPost extends Component {
               <div className='post-author'>{post.author}</div>
             </div>
           </div>
-          {/* <div className="comment-list">
-            {console.log('xxxxxxxxx')}
-            {console.log(this.props)}
-            {console.log(comments)}
-            {this.props.comments.map(comment => (
-              <div className="single-comment" key={comment.id}>
-                <p>{comment.body}</p>
-                <p>{comment.author}</p>
-              </div>
-            ))}
-          </div> */}
           <div className='post-detail-buttons'>
             <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
             <Link to={`/${post.category}/${post.id}/comment`}>Comment</Link>

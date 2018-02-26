@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as commentActions from '../actions/commentActions'
 
-
 class PostComment extends Component {
 
   onCommentDelete = (comment) => {
@@ -17,6 +16,8 @@ class PostComment extends Component {
   render() {
     return (
       <div>
+        {console.log('sssssssssssssss')}
+        {console.log(this.props)}
         {this.props.comments.map(comment => (
           <div className="comment" key={comment.id}>
             <div>

@@ -4,11 +4,14 @@ import {Grid} from 'react-bootstrap';
 import {BrowserRouter, Route, Switch, withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../actions/categoryActions';
+
 import CategoryList from './CategoryList';
 import NewPost from './NewPost';
 import DetailedPost from './DetailedPost';
 import EditPost from './EditPost';
 import NewComment from './NewComment';
+import EditComment from './EditComment';
+
 import "../App.scss";
 
 class App extends Component {
@@ -44,6 +47,7 @@ class App extends Component {
               <Route path="/:category/:postId" exact component={DetailedPost}/>
               <Route path="/:category/:postId/edit" exact component={EditPost}/>
               <Route path="/:category/:postId/comment" exact component={NewComment}/>
+              <Route path="/:category/:postId/:commentId/edit" exact component={EditComment}/>
             </Switch>
           </Grid>
         </div>
