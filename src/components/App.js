@@ -4,7 +4,7 @@ import {Grid} from 'react-bootstrap';
 import {BrowserRouter, Route, Switch, withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../actions/categoryActions';
-import MainPosts from './MainPosts';
+import CategoryList from './CategoryList';
 import NewPost from './NewPost';
 import DetailedPost from './DetailedPost';
 import EditPost from './EditPost';
@@ -35,12 +35,12 @@ class App extends Component {
             ))}
           </div>
         </div>
-
         <div>
           <Grid>
             <Switch>
-              <Route path="/" exact component={MainPosts}/>
+              <Route path="/" exact component={CategoryList}/>
               <Route path="/create" exact component={NewPost}/>
+              <Route path="/:category" exact component={CategoryList}/>
               <Route path="/:category/:postId" exact component={DetailedPost}/>
               <Route path="/:category/:postId/edit" exact component={EditPost}/>
               <Route path="/:category/:postId/comment" exact component={NewComment}/>
@@ -52,8 +52,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({categories, posts}) {
-  return {categories: categories, post: posts}
+function mapStateToProps({categories}) {
+  return {categories: categories}
 }
 
 export default withRouter(connect(mapStateToProps, actions)(App));

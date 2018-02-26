@@ -39,8 +39,8 @@ export const editPost = (postId, title, body) => {
   }).then(res => res.json())
 }
 
-export const fetchPostByCategories = (category) => {
-  return fetch(`$(API)/posts`, { headers }).then(res => res.json())
+export const fetchPostsByCategory = (category) => {
+  return fetch(`${API}/${category}/posts`, {headers}).then(res => res.json())
 }
 
 /****** category function ********/

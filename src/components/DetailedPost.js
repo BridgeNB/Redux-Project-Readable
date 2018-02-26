@@ -55,6 +55,7 @@ class DetailedPost extends Component {
             <button onClick={(e) => this.afterPostDelete(e)}>Delete</button>
           </div>
           {post && comments && <PostComment category={post.category} comments={comments} history={this.props.history}/>}
+          <Link to="/" className="btn home">Back to Home</Link>
         </div>
       )
   }

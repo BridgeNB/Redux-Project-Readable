@@ -29,3 +29,11 @@ export const editPost = (postId, title, body, callback) => {
     dispatch({ type: Types.EDIT_POST, title, body})
   }
 }
+
+export const fetchPostsByCategory = (category) => {
+  return (dispatch) => {
+    API.fetchPostsByCategory(category).then(posts => {
+      dispatch({ type: Types.FETCH_POSTS_BY_CATEGORY, posts})
+    })
+  }
+}
