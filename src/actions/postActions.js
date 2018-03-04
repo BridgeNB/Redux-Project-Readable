@@ -45,3 +45,11 @@ export const fetchPostsByCategory = (category) => {
     })
   }
 }
+
+export const votePost = (postId, option) => {
+  return (dispatch) => {
+    API.votePost(postId, option).then( post => {
+      dispatch({ type: Types.VOTE_POST, postId, option})
+    })
+  }
+}

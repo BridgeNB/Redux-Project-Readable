@@ -4,6 +4,7 @@ export const ADD_POST = 'ADD_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const FETCH_POSTS_BY_CATEGORY = 'FETCH_POSTS_BY_CATEGORY'
+export const VOTE_POST = 'VOTE_POST'
 
 // category actions
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'

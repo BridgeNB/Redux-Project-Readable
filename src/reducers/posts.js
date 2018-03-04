@@ -18,6 +18,18 @@ function posts(state = [], action) {
       })
     case Types.FETCH_POSTS_BY_CATEGORY:
       return posts.filter(post => !(post.deleted))
+    case Types.VOTE_POST:
+      return state.map(post => {
+        if (post.id === action.postId) {
+          if (action.option === "upVote") {
+            post.voteScore += 1
+          }
+          if (action.option === "downVote") {
+            post.voteScore -= 1
+          }
+        }
+        return post
+      })
     default:
       return state
   }

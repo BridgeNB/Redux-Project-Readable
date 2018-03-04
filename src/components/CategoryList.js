@@ -23,7 +23,7 @@ class CategoryList extends Component {
         <div className="postsList">
           <h3> This is post list </h3>
           <Link to="/create" className="btn btn-danger">Create post</Link>
-          { posts.map((post) => (
+          {posts.map((post) => (
             <SinglePost post={post} key={post.id} />
           ))}
           <Link to="/" className="btn home">Back to Home</Link>

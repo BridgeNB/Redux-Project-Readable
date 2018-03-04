@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import _ from 'lodash'
+import { Button } from 'react-bootstrap';
+import _ from 'lodash';
 
-import { deletePost } from '../actions/postActions'
-import { fetchCommentsForPost } from '../actions/commentActions'
-import { fetchAllPosts } from '../actions/postActions'
+import { fetchCommentsForPost } from '../actions/commentActions';
+import { votePost, fetchAllPosts, deletePost } from '../actions/postActions';
 
-import PostComment from './PostComment'
+import PostComment from './PostComment';
 
 class DetailedPost extends Component {
   componentDidMount() {
@@ -23,7 +23,7 @@ class DetailedPost extends Component {
   }
 
   render() {
-      const { post, comments } = this.props
+      const { post, comments, votePost, fetchAllPosts } = this.props
       if (!post) {
         return <div>404 not found</div>
       }
@@ -33,16 +33,29 @@ class DetailedPost extends Component {
             <div className='post-detail'>
               <div className='post-title'>{post.title}</div>
               <div className='post-body'>{post.body}</div>
+              <div className="post-votes">
+                <Button onClick={() => {
+                  votePost(post.id, "upVote")
+                  fetchAllPosts()
+                }}>Vote up</Button>
+                <Button onClick={() => {
+                  votePost(post.id, "downVote")
+                  fetchAllPosts()
+                }}>Vote down</Button>
+              </div>
+              <div className="post-likes-comments">
+                {post.voteScore} votes {comments && comments ? comments.length : 0} comments
+              </div>
               <div className='post-author'>{post.author}</div>
             </div>
           </div>
           <div className='post-detail-buttons'>
-            <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
-            <Link to={`/${post.category}/${post.id}/comment`}>Comment</Link>
-            <button onClick={(e) => this.afterPostDelete(e)}>Delete</button>
+            <Link to={`/${post.category}/${post.id}/edit`}><Button>Edit</Button></Link>
+            <Link to={`/${post.category}/${post.id}/comment`}><Button>Comment</Button></Link>
+            <Button onClick={(e) => this.afterPostDelete(e)}>Delete</Button>
           </div>
           {post && comments && <PostComment category={post.category} comments={comments} history={this.props.history}/>}
-          <Link to="/" className="btn home">Back to Home</Link>
+          <Link to="/" className="btn home"><Button>Back to Home</Button></Link>
         </div>
       )
   }
@@ -56,4 +69,4 @@ function mapStateToProps({ posts, comments }, { match }) {
   }
 }
 
-export default connect(mapStateToProps, { deletePost, fetchCommentsForPost, fetchAllPosts })(DetailedPost)
+export default connect(mapStateToProps, { deletePost, votePost, fetchCommentsForPost, fetchAllPosts })(DetailedPost)
