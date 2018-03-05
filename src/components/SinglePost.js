@@ -10,11 +10,10 @@ class SinglePost extends Component {
     this.props.fetchCommentsForPost(this.props.post.id)
   }
   render() {
-    let { post, comments, votePost, fetchAllPosts } = this.props;
+    let { post, votePost, fetchAllPosts } = this.props;
     return (
       <div className="singlePost">
-        {console.log('xxxxxxxxxx')}
-        {console.log(this.props)}
+
         <Link to={`/${post.category}/${post.id}`}>
           <div className="postTitle"><h3>{ post.title }</h3></div>
         </Link>

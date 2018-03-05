@@ -1,20 +1,15 @@
-import React, {Component} from 'react'
-// import {Field, reduxForm} from 'redux-form'
-import {Link} from 'react-router-dom'
-import {Button} from 'react-bootstrap'
-import {connect} from 'react-redux'
-import {addPost} from '../actions/postActions'
-import {guid} from '../api/util'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import { connect } from 'react-redux'
+
+import { addPost } from '../actions/postActions'
+import { guid } from '../api/util'
 
 class NewPost extends Component {
+
   createNewPost = (e) => {
     e.preventDefault()
-
-    const title = e.target.title.value;
-    const body = e.target.body.value;
-    const author = e.target.author.value;
-    const category = e.target.category.value;
-
     const newPost = {
       id: guid(),
       timestamp: Date.now(),
@@ -28,7 +23,12 @@ class NewPost extends Component {
   }
 
   render() {
-    const { posts, categories } = this.props.posts;
+    const { categories } = this.props.posts;
+    const categoryList = [];
+    for (let i = 0; i < categories.length; i++) {
+      categoryList.push({value: categories[i].name, label: categories[i].name})
+    }
+
     return (<form onSubmit={this.createNewPost}>
       <h2>New Post</h2>
       <ul className="form-style-1">
@@ -59,7 +59,7 @@ class NewPost extends Component {
         </li>
       </ul>
       <Button type="submit" bsStyle="primary">Submit</Button>
-      <Link to="/" className="btn btn-danger">Cancel</Link>
+      <Link to="/" className="btn btn-danger"><Button>Cancel</Button></Link>
     </form>)
   }
 }
@@ -68,4 +68,4 @@ function mapStateToProps(posts, categories) {
   return {posts: posts, categories: categories}
 }
 
-export default connect(mapStateToProps, {addPost})(NewPost);
+export default connect(mapStateToProps, { addPost })(NewPost);

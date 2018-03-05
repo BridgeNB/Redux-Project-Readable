@@ -6,15 +6,14 @@ function comments(state=[], action) {
     case Types.ADD_COMMENT:
       return Object.assign({}, state, {[postId]: comments})
     case Types.FETCH_COMMENTS:
-      return Object.assign({}, state, {[postId]: comments})
-      // let newState = { ...initialState }
-      // if (action.comments.length > 0) {
-      //  const key = action.comments[0].parentId
-      //  newState[key] = action.comments
-      // } else {
-      //  newState[action.postId] = []
-      // }
-      // return newState;
+      let newState = { ...state }
+      if (action.comments.length > 0) {
+       const key = action.comments[0].parentId
+       newState[key] = action.comments
+      } else {
+       newState[action.postId] = []
+      }
+      return newState;
     case Types.EDIT_COMMENT:
       return {
         ...state,

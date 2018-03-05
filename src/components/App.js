@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Grid} from 'react-bootstrap';
-import {BrowserRouter, Route, Switch, withRouter, Link} from 'react-router-dom';
+import { Route, Switch, withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../actions/categoryActions';
 

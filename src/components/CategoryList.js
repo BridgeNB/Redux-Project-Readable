@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import * as actions from '../actions/postActions'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import SinglePost from './SinglePost'
+import * as actions from '../actions/postActions'
 
 class CategoryList extends Component {
 
@@ -22,11 +23,11 @@ class CategoryList extends Component {
       <div>
         <div className="postsList">
           <h3> This is post list </h3>
-          <Link to="/create" className="btn btn-danger">Create post</Link>
           {posts.map((post) => (
             <SinglePost post={post} key={post.id} />
           ))}
-          <Link to="/" className="btn home">Back to Home</Link>
+          <Link to="/create" className="btn btn-danger"><Button>Create post</Button></Link>
+          <Link to="/" className="btn home"><Button>Back to Home</Button></Link>
         </div>
       </div>
     )
