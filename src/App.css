@@ -7,3 +7,55 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #73c0ee; }
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  background: azure; }
+
+.app-head h1 {
+  text-align: center; }
+
+.whole-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%; }
+  .whole-app .category-changer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .whole-app .category-changer .category-list {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: center; }
+      .whole-app .category-changer .category-list .category-tag {
+        flex: 1;
+        margin: 5px;
+        padding: 5px;
+        font-weight: bold; }
+  .whole-app .post-list {
+    display: flex;
+    flex-direction: column; }
+    .whole-app .post-list h2 {
+      text-align: center; }
+    .whole-app .post-list .post-list-bottom {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: center; }
+      .whole-app .post-list .post-list-bottom .btn {
+        flex: 1;
+        margin: 5px;
+        padding: 5px;
+        font-weight: bold; }

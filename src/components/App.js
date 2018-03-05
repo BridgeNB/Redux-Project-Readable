@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Grid} from 'react-bootstrap';
+import { Grid, Button } from 'react-bootstrap';
 import { Route, Switch, withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../actions/categoryActions';
@@ -12,7 +12,7 @@ import EditPost from './EditPost';
 import NewComment from './NewComment';
 import EditComment from './EditComment';
 
-import "../App.scss";
+import "../App.css";
 
 class App extends Component {
   static propTypes = {
@@ -28,16 +28,20 @@ class App extends Component {
     const {categories} = this.props
     return (
       <div className="whole-app">
-        <div className="filters">
-          <div className="category-changer">
-            <p>Choose Category</p>
+        <div className="app-head">
+          <h1>Bridge's Forum</h1>
+        </div>
+        <div className="category-changer">
+          <h2>Choose Posts by Category</h2>
+          <div className="category-list">
             {categories && categories.map(category => (
               <Link key={category.name} to={`/${category.path}`}>
-                <button>{category.name}</button>
+                <Button className="category-tag">{category.name.charAt(0).toUpperCase() + category.name.slice(1)}</Button>
               </Link>
             ))}
           </div>
         </div>
+
         <div>
           <Grid>
             <Switch>

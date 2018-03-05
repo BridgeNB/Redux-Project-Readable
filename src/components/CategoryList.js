@@ -21,13 +21,15 @@ class CategoryList extends Component {
     const { posts } = this.props;
     return (
       <div>
-        <div className="postsList">
-          <h3> This is post list </h3>
+        <div className="post-list">
+          <h2> This is post list </h2>
           {posts.map((post) => (
             <SinglePost post={post} key={post.id} />
           ))}
-          <Link to="/create" className="btn btn-danger"><Button>Create post</Button></Link>
-          <Link to="/" className="btn home"><Button>Back to Home</Button></Link>
+          <div className="post-list-bottom">
+            <Link to="/create" className="btn btn-danger"><Button>Create post</Button></Link>
+            <Link to="/" className="btn home"><Button>Back to Home</Button></Link>
+          </div>
         </div>
       </div>
     )
