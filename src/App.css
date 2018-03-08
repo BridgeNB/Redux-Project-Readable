@@ -1,13 +1,6 @@
 * {
   box-sizing: border-box; }
 
-.singlePost {
-  width: 420px;
-  margin: 10px auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #73c0ee; }
-
 #root {
   display: flex;
   align-items: center;
@@ -23,6 +16,21 @@ body {
 
 .app-head h1 {
   text-align: center; }
+
+/****************** Post CSS ***********/
+.single-post-detail {
+  text-align: center;
+  width: 420px;
+  margin: 10px auto;
+  background-color: #73c0ee; }
+  .single-post-detail div {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .single-post-detail .post-title {
+    font-weight: bold;
+    font-size: 1.25rem; }
+  .single-post-detail .post-body {
+    font-size: 1.5rem; }
 
 .whole-app {
   display: flex;
@@ -59,3 +67,26 @@ body {
         margin: 5px;
         padding: 5px;
         font-weight: bold; }
+
+.single-post-bottom {
+  display: flex;
+  flex-direction: row; }
+  .single-post-bottom .comments-summary {
+    display: flex;
+    flex-direction: row; }
+    .single-post-bottom .comments-summary span {
+      margin-left: 5px;
+      margin-right: 5px; }
+  .single-post-bottom .post-votes {
+    display: flex;
+    flex-direction: row; }
+    .single-post-bottom .post-votes Button {
+      font-weight: bold;
+      margin-left: 5px;
+      margin-right: 5px; }
+
+.detailed-post div {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+/********************* Comment Css **************/

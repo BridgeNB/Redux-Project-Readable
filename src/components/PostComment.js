@@ -16,8 +16,6 @@ class PostComment extends Component {
   render() {
     return (
       <div>
-        {console.log('sssssssssssssss')}
-        {console.log(this.props)}
         {this.props.comments.map(comment => (
           <div className="comment" key={comment.id}>
             <div>

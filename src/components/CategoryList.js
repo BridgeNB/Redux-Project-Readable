@@ -27,8 +27,8 @@ class CategoryList extends Component {
             <SinglePost post={post} key={post.id} />
           ))}
           <div className="post-list-bottom">
-            <Link to="/create" className="btn btn-danger"><Button>Create post</Button></Link>
-            <Link to="/" className="btn home"><Button>Back to Home</Button></Link>
+            <Link to="/create" className="btn"><Button>Create post</Button></Link>
+            <Link to="/" className="btn"><Button>Back to Home</Button></Link>
           </div>
         </div>
       </div>

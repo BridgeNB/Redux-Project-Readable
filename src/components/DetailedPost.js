@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Well } from 'react-bootstrap';
 import _ from 'lodash';
 
 import { fetchCommentsForPost } from '../actions/commentActions';
@@ -28,25 +28,33 @@ class DetailedPost extends Component {
         return <div>404 not found</div>
       }
       return (
-        <div>
+        <div className="detailed-post">
           <div className='post' key='post-id'>
-            <div className='post-detail'>
-              <div className='post-title'>{post.title}</div>
-              <div className='post-body'>{post.body}</div>
-              <div className="post-votes">
-                <Button onClick={() => {
-                  votePost(post.id, "upVote")
-                  fetchAllPosts()
-                }}>Vote up</Button>
-                <Button onClick={() => {
-                  votePost(post.id, "downVote")
-                  fetchAllPosts()
-                }}>Vote down</Button>
+            <div className="single-post">
+              <div className="single-post-detail">
+                <Link to={`/${post.category}/${post.id}`}>
+                  <div className="post-title"><h3>{ post.title }</h3></div>
+                </Link>
+                <div className="post-body"><Well bsSize="large">{ post.body }</Well></div>
+                <div className="post-author">Author: <Button bsStyle="info">{ post.author }</Button></div>
+                <div className="post-category">Category: <Button bsStyle="info">{ post.category }</Button></div>
               </div>
-              <div className="post-likes-comments">
-                {post.voteScore} votes {comments && comments ? comments.length : 0} comments
+              <div className="single-post-bottom">
+                <div className="comments-summary">
+                  <span>{ post.commentCount } <strong>Comments</strong></span>
+                  <span>{ post.voteScore } <strong>Votes</strong></span>
+                </div>
+                <div className="post-votes">
+                  <Button onClick={() => {
+                    votePost(post.id, "upVote")
+                    fetchAllPosts()
+                  }}>Vote up</Button>
+                  <Button onClick={() => {
+                    votePost(post.id, "downVote")
+                    fetchAllPosts()
+                  }}>Vote down</Button>
+                </div>
               </div>
-              <div className='post-author'>{post.author}</div>
             </div>
           </div>
           <div className='post-detail-buttons'>
