@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as commentActions from '../actions/commentActions'
+import { Button } from 'react-bootstrap'
 
 class PostComment extends Component {
 
@@ -12,21 +13,30 @@ class PostComment extends Component {
       this.props.fetchCommentsForPost(comment.parentId)
     })
   }
-
   render() {
+    const { voteComment } = this.props;
     return (
       <div>
         {this.props.comments.map(comment => (
           <div className="comment" key={comment.id}>
             <div>
-              <p>{comment.body}</p>
+              <div className='comment-body'>{comment.body}</div>
               <div className="comment-author">by <b>{comment.author}</b></div>
+              <div className="comment-votes-section">
+                  <div className="comment-votes">{comment.voteScore} <strong>Votes</strong></div>
+                  <Button onClick={() => {
+                    voteComment(comment.id, comment.parentId, "upVote")
+                  }}>Vote up</Button>
+                  <Button onClick={() => {
+                    voteComment(comment.id, comment.parentId, 'downVote')
+                  }}>Vote down</Button>
+              </div>
             </div>
-            <div className="button-action">
+            <div className="comment-button-action">
               <Link to={`/${this.props.category}/${comment.parentId}/${comment.id}/edit`}>
-                <button>Edit</button>
+                <Button>Edit</Button>
               </Link>
-              <button onClick={() => this.onCommentDelete(comment)}>Delete</button>
+              <Button onClick={() => this.onCommentDelete(comment)}>Delete</Button>
             </div>
           </div>
         ))}
@@ -36,7 +46,9 @@ class PostComment extends Component {
 }
 
 function mapStateToProps({ posts }) {
-  return { posts }
+  return {
+    posts: posts
+  }
 }
 
 export default connect(mapStateToProps, commentActions)(PostComment)

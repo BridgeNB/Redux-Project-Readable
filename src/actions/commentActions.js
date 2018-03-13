@@ -31,3 +31,11 @@ export const editComment = (commentId, postId, timestamp, body, callback) => {
       }).then(() => callback())
   }
 }
+
+export const voteComment = (commentId, postId, option) => {
+  return (dispatch) => {
+    API.voteComment(commentId, option).then((editedComment) => {
+      dispatch({type: Types.VOTE_COMMENT, editedComment, commentId, postId})
+    })
+  }
+}

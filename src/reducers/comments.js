@@ -1,6 +1,6 @@
 import * as Types from '../actions/types'
 
-function comments(state=[], action) {
+function comments(state = {}, action) {
   const { comments, commentId, postId, editedComment } = action
   switch(action.type) {
     case Types.ADD_COMMENT:
@@ -15,6 +15,16 @@ function comments(state=[], action) {
       }
       return newState;
     case Types.EDIT_COMMENT:
+      return {
+        ...state,
+        [postId]: state[postId].map(comment => {
+          if(comment.id === commentId) {
+            comment = editedComment
+          }
+          return comment
+        })
+      }
+    case Types.VOTE_COMMENT:
       return {
         ...state,
         [postId]: state[postId].map(comment => {

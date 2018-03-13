@@ -14,6 +14,9 @@ body {
   align-content: center;
   background: azure; }
 
+Button {
+  font-weight: bold; }
+
 .app-head h1 {
   text-align: center; }
 
@@ -90,3 +93,27 @@ body {
   margin-bottom: 10px; }
 
 /********************* Comment Css **************/
+.comment-votes-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+  .comment-votes-section Button {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px; }
+
+.comment-body {
+  background-color: #73c0ee;
+  text-align: center; }
+
+.comment-author {
+  text-align: center; }
+
+.comment-button-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: left; }
+  .comment-button-action Button {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px; }
