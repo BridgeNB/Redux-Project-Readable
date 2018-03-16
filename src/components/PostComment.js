@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap'
 class PostComment extends Component {
 
   onCommentDelete = (comment) => {
-    let parentId = comment.parentId
+    const parentId = comment.parentId
     this.props.deleteComment(comment.id, () => {
       this.props.history.push(`/post/${parentId}`)
       this.props.fetchCommentsForPost(comment.parentId)

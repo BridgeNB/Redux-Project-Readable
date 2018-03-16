@@ -1,7 +1,8 @@
 import * as Types from '../actions/types'
+import sortBy from "sort-by"
 
 function posts(state = [], action) {
-  const { post, postId, editedPost, posts } = action
+  const { post, postId, editedPost, posts, option } = action
   switch(action.type) {
     case Types.FETCH_POSTS:
       return posts.filter(post => !(post.deleted))
@@ -30,6 +31,8 @@ function posts(state = [], action) {
         }
         return post
       })
+    case Types.SORT_POST:
+      return [].concat(state.sort(sortBy(option)).reverse())
     default:
       return state
   }

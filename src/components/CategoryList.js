@@ -18,11 +18,15 @@ class CategoryList extends Component {
   }
 
   render() {
-    const { posts } = this.props;
+    const { posts, sortPost } = this.props;
     return (
       <div>
         <div className="post-list">
           <h2> This is post list </h2>
+          <div className="sort-posts">
+            <Button onClick={() => sortPost("voteScore")}>View posts by votes</Button>
+            <Button onClick={() => sortPost("timestamp")}>View posts by time</Button>
+          </div>
           {posts.map((post) => (
             <SinglePost post={post} key={post.id} />
           ))}

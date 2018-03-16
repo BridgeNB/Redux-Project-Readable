@@ -46,3 +46,9 @@ export const votePost = (postId, option) => {
     })
   }
 }
+
+export const sortPost = (option) => {
+  return (dispatch) => {
+    dispatch({ type: Types.SORT_POST, option})
+  }
+}

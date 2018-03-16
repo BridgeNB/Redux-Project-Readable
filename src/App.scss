@@ -30,6 +30,17 @@ Button {
 
 /****************** Post CSS ***********/
 
+.sort-posts {
+  display: flex;
+  flex-direction: row;
+
+  Button {
+      font-weight: bold;
+      margin-left: 5px;
+      margin-right: 5px;
+  }
+}
+
 .single-post-detail {
   text-align: center;
   width: 420px;

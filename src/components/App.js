@@ -34,11 +34,14 @@ class App extends Component {
         <div className="category-changer">
           <h2>Choose Posts by Category</h2>
           <div className="category-list">
-            {categories && categories.map(category => (
-              <Link key={category.name} to={`/${category.path}`}>
-                <Button className="category-tag">{category.name.charAt(0).toUpperCase() + category.name.slice(1)}</Button>
-              </Link>
-            ))}
+            {categories && categories.map(category => {
+              const { name, path } = category;
+              return (
+                <Link key={name} to={`/${path}`}>
+                  <Button className="category-tag">{name.charAt(0).toUpperCase() + name.slice(1)}</Button>
+                </Link>
+              )
+            })}
           </div>
         </div>
 
