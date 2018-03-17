@@ -21,10 +21,11 @@ Button {
   text-align: center; }
 
 /****************** Post CSS ***********/
-.sort-posts {
+.sort-posts, .post-action-button {
   display: flex;
-  flex-direction: row; }
-  .sort-posts Button {
+  flex-direction: row;
+  align-items: center; }
+  .sort-posts Button, .post-action-button Button {
     font-weight: bold;
     margin-left: 5px;
     margin-right: 5px; }
