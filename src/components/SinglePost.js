@@ -25,8 +25,6 @@ class SinglePost extends Component {
           <div className="post-author">Author: <Button bsStyle="info">{ post.author }</Button></div>
           <div className="post-category">Category: <Button bsStyle="info">{ post.category }</Button></div>
           <div className="post-action-button">
-            {console.log('xxxxxx')}
-            {console.log(this.props)}
             <Link to={`/${post.category}/${post.id}/edit`}><Button>Edit</Button></Link>
             <Link to={`/${post.category}/${post.id}/comment`}><Button>Comment</Button></Link>
             <Button onClick={(e) => this.afterPostDelete(e)}>Delete</Button>
