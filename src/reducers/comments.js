@@ -5,7 +5,7 @@ function comments(state = {}, action) {
   switch(action.type) {
     case Types.ADD_COMMENT:
       return Object.assign({}, state, {[postId]: comments})
-    case Types.FETCH_COMMENTS:
+    case Types.FETCH_COMMENTS: {
       let newState = { ...state }
       if (action.comments.length > 0) {
        const key = action.comments[0].parentId
@@ -14,6 +14,7 @@ function comments(state = {}, action) {
        newState[action.postId] = []
       }
       return newState;
+    }
     case Types.EDIT_COMMENT:
       return {
         ...state,
